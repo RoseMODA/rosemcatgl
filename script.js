@@ -1460,3 +1460,18 @@ function setupMobileMenu() {
     });
   }
 }
+
+
+// Link de Inicio que va al index.html
+// Forzar navegación al hacer clic en el logo o en el link "Inicio"
+document.getElementById('home-logo-link')?.addEventListener('click', function (e) {
+  e.preventDefault();
+  window.location.href = 'index.html';
+});
+
+document.querySelectorAll('a[href="index.html"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.location.href = 'index.html';
+  });
+});
