@@ -355,8 +355,8 @@ function setupEventListeners() {
     mobileSearchBtn.addEventListener('click', toggleMobileSearch);
   }
   
-  // Category navigation
-  const categoryLinks = document.querySelectorAll('.category-nav a, #mobile-menu a');
+  // Category navigation - Updated to include main navbar links
+  const categoryLinks = document.querySelectorAll('.category-nav a, #mobile-menu a, nav a');
   categoryLinks.forEach(link => {
     link.addEventListener('click', handleCategoryClick);
   });
@@ -402,6 +402,17 @@ function setupEventListeners() {
   if (sidebarOverlay) {
     sidebarOverlay.addEventListener('click', closeCategorySidebar);
   }
+  
+  // Home logo link
+  const homeLogo = document.getElementById('home-logo-link');
+  if (homeLogo) {
+    homeLogo.addEventListener('click', function(e) {
+      e.preventDefault();
+      backToHome();
+    });
+  } else {
+    console.warn("Home logo link not found.");
+  }
 }
 
 function handleSearch(e) {
@@ -437,9 +448,17 @@ function closeMobileSearch() {
 function handleCategoryClick(e) {
   e.preventDefault();
   
+  // Get the text content of the clicked element and trim whitespace
+  const categoryText = e.target.textContent.toLowerCase().trim();
+  
+  // If the clicked text is "inicio", use backToHome
+  if (categoryText === 'inicio') {
+    backToHome();
+    return; // Do not continue with category processing
+  }
+  
   // Get category from data attribute or text content
   const categoryData = e.target.dataset.category;
-  const categoryText = e.target.textContent.toLowerCase();
   
   // Map category names
   const categoryMap = {

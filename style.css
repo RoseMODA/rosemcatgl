@@ -33,6 +33,7 @@
       transition: color 0.3s ease;
       font-size: 1rem;
       font-family: 'Roboto Mono', monospace;
+      cursor: pointer;
     }
     nav a:hover,
     nav a:focus {
@@ -48,6 +49,7 @@
       letter-spacing: 0.05em;
       font-size: 1.125rem;
       transition: color 0.3s ease;
+      cursor: pointer;
     }
     .category-nav a:hover,
     .category-nav a:focus {
@@ -639,4 +641,27 @@ button.arrow-btn.next {
         grid-template-columns: 1fr;
         gap: 1rem;
       }
+    }
+
+    /* Home logo link styling */
+    #home-logo-link {
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    #home-logo-link:hover {
+      opacity: 0.9;
+    }
+
+    /* Mobile menu links */
+    #mobile-menu a {
+      cursor: pointer;
+    }
+
+    /* Ensure all clickable navigation elements show pointer cursor */
+    .category-nav a,
+    #mobile-menu a,
+    nav a,
+    #home-logo-link {
+      cursor: pointer;
     }
